@@ -1,4 +1,4 @@
-const body = document.querySelector('body');
+const library = document.querySelector('.library');
 
 let test = new Book('abc', 'abx', 34, true);
 let test2 = new Book('a1bc', 'abx', 344, true);
@@ -27,17 +27,17 @@ function displayBooks() {
         let bookBody = document.createElement('div');
         bookBody.classList.add('book');
         let bookAuthor = document.createElement('p');
-        bookAuthor.textContent = `${book.author}`;
+        bookAuthor.textContent = `Author: ${book.author}`;
         let bookTitle = document.createElement('p');
-        bookTitle.textContent = `${book.title}`;
+        bookTitle.textContent = `Title: ${book.title}`;
         let bookNumPage = document.createElement('p');
-        bookNumPage.textContent = `${book.numPages}`;
+        bookNumPage.textContent = `Page # : ${book.numPages}pg`;
         let bookRead = document.createElement('p');
-        bookRead.textContent = `${book.read}`;
+        bookRead.textContent = `Read: ${book.read}`;
         bookBody.appendChild(bookAuthor)
         bookBody.appendChild(bookTitle)
         bookBody.appendChild(bookNumPage)
         bookBody.appendChild(bookRead)
-        body.appendChild(bookBody);
+        library.appendChild(bookBody);
     }
 }
