@@ -5,6 +5,10 @@ body {
     margin: 0;
 }
 
+.hide {
+    display: none;
+}
+
 .form {
     position: fixed;
     width: 100vw;
