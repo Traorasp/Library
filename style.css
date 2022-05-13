@@ -5,10 +5,59 @@ body {
     margin: 0;
 }
 
+.form {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.409);
+}
+
+fieldset {
+    position:fixed;
+    left: 40%;
+    top: 35%;
+    background-color: white;
+    width: 20vw;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+fieldset div {
+    display: flex;
+}
+
+label {
+    padding: 0;
+    margin:  0 0 0 10px;
+    font-size: 16px;
+    flex: 1;
+}
+
+input[type="text"], input[type="number"] {
+    padding: 0;
+    margin:  0 10px 0 0;
+    font-size: 16px;
+    flex: 4;
+}
+
+input[type="checkbox"] {
+    padding: 0;
+    margin:  0 70% 0 0;
+    width: 2.5vw;
+    height: 2.5vh;
+}
+
+fieldset button {
+    background-color: rgb(57, 255, 47);
+    font-size: 24px;
+    border-radius: 10%;
+}
+
 .controls {
     flex: 1 1 0;
     background-color: red;
-
 }
 
 .library {
