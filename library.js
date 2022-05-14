@@ -8,7 +8,8 @@ const addBookButton = document.querySelector('.submit-form');
 addBookButton.addEventListener('click', addBookToLibrary);
 
 const exitButton = document.querySelector(".exit-form");
-exitButton.addEventListener('click', exitForm)
+exitButton.addEventListener('click', exitForm);
+
 
 let myLibrary = [];
 
@@ -28,15 +29,16 @@ function Book(title, author, numPages, read){
     this.author = author;
     this.title = title;
     this.numPages = numPages;
-    this.read = (read =='on') ? "Read" : "Unreads";
+    this.read = read;
 }
 
 //Creates a book ith the information from the form, adds it to the library array clears the form and runs displayBook() funtion
 function addBookToLibrary() {
+    let check = document.getElementById("read").checked
     let book = new Book(document.getElementById("title").value, 
     document.getElementById("author").value,
     document.getElementById("pages").value,
-    document.getElementById("read").value);
+    check);
     myLibrary.push(book);
     bookForm.classList.add('hide');
     clearForm();
@@ -53,21 +55,29 @@ function clearForm(){
 
 //Creates a book div and inserts all the book properties into it before adding it to the library section
 function displayBooks() {
-        let book = myLibrary[myLibrary.length-1];
+    library.innerHTML = '';
+    for(let i = myLibrary.length-1; i >= 0; i--){
+        let book = myLibrary[i];
         let bookBody = document.createElement('div');
         bookBody.classList.add('book');
         let bookAuthor = document.createElement('p');
         bookAuthor.textContent = `Author: ${book.author}`;
         let bookTitle = document.createElement('p');
         bookTitle.textContent = `Title: ${book.title}`;
-        let bookNumPage = document.createElement('p');
+        const bookNumPage = document.createElement('p');
         bookNumPage.textContent = `Page # : ${book.numPages}pg`;
-        let bookRead = document.createElement('p');
-        bookRead.textContent = `Read: ${book.read}`;
-        bookBody.appendChild(bookTitle)
-        bookBody.appendChild(bookAuthor)
-        bookBody.appendChild(bookNumPage)
-        bookBody.appendChild(bookRead)
+        const readButton = document.createElement('button');
+        (book.read) ? readButton.classList.add('btn', 'read') : readButton.classList.add('btn');
+        readButton.textContent = (book.read) ? "Read" : "Not Read";
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete");
+        deleteButton.textContent = "Remove";
+        bookBody.appendChild(bookTitle);
+        bookBody.appendChild(bookAuthor);
+        bookBody.appendChild(bookNumPage);
+        bookBody.appendChild(readButton);
+        bookBody.appendChild(deleteButton);
         library.appendChild(bookBody);
-
+    }
 }
+
